@@ -8,7 +8,7 @@ The firmware is tested only on KINGROON KP3S.
 
 ### Raspberry Pi
 
-Run the following command to build the firmware.
+Run the following commands to build the firmware.
 
 ```
 git clone https://github.com/Tiryoh/klipper-mcu-config.git
@@ -16,12 +16,14 @@ cd klipper-mcu-config
 ./build.sh
 ```
 
-Firmware will built and written in the `build` directory.  
-If you want to download the firmware to PC from web browser, run the following command to start the web server.
+The firmware will be built and written in the `build` directory.
+If you want to download the firmware to a PC from the web browser, run the following command to start the web server.
 
 ```
 python3 -m http.server 8000
 ```
+
+The file is available from `http://$raspberry-pi-ip-address:8000`, like `http://192.168.10.40:8000`.
 
 After downloading the firmware file, write the `Robin_nano.bin` to the SD card and flash it to the KP3S.
 
@@ -34,7 +36,7 @@ docker build -t klipper-firmware-builder:latest .
 docker run --rm -it -v $PWD/build:/home/klippy/klipper-mcu-config/build klipper-firmware-builder:latest /home/klippy/klipper-mcu-config/build.sh
 ```
 
-Firmware will built and written in the `build` directory.  
+The firmware will be built and written in the `build` directory.
 
 After creating the firmware file, write the `Robin_nano.bin` to the SD card and flash it to the KP3S.
 
