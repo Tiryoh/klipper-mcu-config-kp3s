@@ -7,11 +7,18 @@
 # Copyright (C) 2016  Kevin O'Connor <kevin@koconnor.net>
 # License: https://github.com/Klipper3d/klipper/blob/1636a9759bc2d5f162312ac8bf5823e95e0ad053/COPYING
 
-FROM ubuntu:20.04
+FROM ubuntu:20.04 as base
 
 RUN apt-get update && \
-    apt-get install -y sudo git && \
+    apt-get install -y sudo git \
+    python-dev libffi-dev build-essential \
+    libncurses-dev \
+    avrdude gcc-avr binutils-avr avr-libc \
+    stm32flash libnewlib-arm-none-eabi \
+    gcc-arm-none-eabi binutils-arm-none-eabi libusb-1.0 && \
     rm -rf /var/lib/apt/lists/*
+
+FROM base
 
 ### Pre-setup ###
 # Create user
