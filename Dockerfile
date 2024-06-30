@@ -49,5 +49,6 @@ RUN sudo rm -f /bin/systemctl
 COPY --chown=klippy build.sh klipper-mcu-config/
 COPY --chown=klippy scripts/ klipper-mcu-config/scripts/
 COPY --chown=klippy configs/ klipper-mcu-config/configs/
+RUN chmod +x klipper-mcu-config/build.sh
 
 CMD ["/home/klippy/klipper-mcu-config/build.sh"]
